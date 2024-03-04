@@ -1,7 +1,15 @@
 # This is so we convert data into JSON
-
 from rest_framework import serializers
-from .models import Job
+from .models import Job, Category
+
+
+class CategoriesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = (
+            'id',
+            'title',
+        )
 
 
 class JobSerializer(serializers.ModelSerializer):
