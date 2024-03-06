@@ -21,11 +21,11 @@ async function submitForm() {
 
     router.push({path: "/login"})
   }).catch(error => {
-      if (error.respons) {
-        for (const property in error.respons.data) {
+      if (error.response) {
+        for (const property in error.response.data) {
           errors.value.push(`${property}: ${error.response._data[property]}`)
         }
-        console.log(JSON.stringify(error.respons))
+        console.log(JSON.stringify(error.response))
       } else if (error.message) {
         errors.value.push("Something went wrong, try again.")
         console.log(JSON.stringify(error))
