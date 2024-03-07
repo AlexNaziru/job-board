@@ -1,6 +1,10 @@
 <script setup>
   import {useUserStore} from "~/stores/users.js";
   const userStore = useUserStore()
+
+  function logout() {
+    userStore.removeToken()
+  }
 </script>
 
 <template>
@@ -21,7 +25,7 @@
       <template v-if="userStore.user.isAuthenticated">
         <NuxtLink to="/myjobs" class="py-4 px-6 bg-green-500 hover:bg-green-600 text-white rounded-xl">Job-urile mele</NuxtLink>
         <NuxtLink to="/create-job" class="py-4 px-6 bg-green-500 hover:bg-green-600 text-white rounded-xl">Creeaza</NuxtLink>
-        <NuxtLink to="/logout" class="py-4 px-6 bg-rose-500 hover:bg-rose-600 text-white rounded-xl">Deconectare</NuxtLink>
+        <a v-on:click="logout" class="py-4 px-6 bg-rose-500 hover:bg-rose-600 text-white rounded-xl">Deconectare</a>
       </template>
 
       <template v-else>
